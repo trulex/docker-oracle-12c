@@ -121,14 +121,6 @@ case "$1" in
 		fi
 
 		echo "Database ready to use. Enjoy! ;)"
-
-		##
-		## Workaround for graceful shutdown.
-		##
-		while [ "$END" == '' ]; do
-			sleep 1
-			trap "su oracle -c 'echo shutdown immediate\; | $ORACLE_HOME/bin/sqlplus -S / as sysdba'" INT TERM
-		done
 		;;
 
 	*)
